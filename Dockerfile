@@ -2,10 +2,8 @@
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 
-# Copy Maven files first (better caching)
+# Copy pom.xml first for dependency caching
 COPY pom.xml .
-COPY .mvn .mvn
-COPY mvnw .
 RUN mvn -B dependency:go-offline
 
 # Copy source code
@@ -19,9 +17,8 @@ FROM eclipse-temurin:21-jre
 WORKDIR /app
 
 # Copy JAR built inside Docker
-COPY --from=build /app/target/AMY-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/SM-Clinic-V1-0.0.1-SNAPSHOT.jar app.jar
 
-# Render port
 EXPOSE 8080
 ENV PORT=8080
 
