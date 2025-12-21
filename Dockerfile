@@ -17,7 +17,7 @@ FROM eclipse-temurin:21-jre
 WORKDIR /app
 
 # Copy JAR built inside Docker
-COPY --from=build /app/target/SM-Clinic-V1-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/perfume-site-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
 ENV PORT=8080
