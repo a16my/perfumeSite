@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>Edit Product</h2>
+
+<form th:action="@{/admin/products/edit/{id}(id=${product.id})}"
+      th:object="${product}"
+      method="post">
+
+    Name: <input type="text" th:field="*{name}"/><br><br>
+    Brand: <input type="text" th:field="*{brand}"/><br><br>
+    Price: <input type="number" th:field="*{price}"/><br><br>
+    Stock: <input type="number" th:field="*{stock}"/><br><br>
+    Description: <input type="text" th:field="*{description}"/><br><br>
+    Gender: <input type="text" th:field="*{gender}"/><br><br>
+    Wear Time: <input type="text" th:field="*{wearTime}"/><br><br>
+
+    <button type="submit">Save</button>
+</form>
+
+<br>
+<a href="/admin/products">⬅ Back</a>
+
+</body>
+</html>
